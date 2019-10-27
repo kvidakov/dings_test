@@ -1,18 +1,39 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <HeroImg :promotion-start="promotionStart"/>
+    <Prizes />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Axios from 'axios';
+import moment from 'moment';
+import HeroImg from '@/components/HeroImg';
+import Prizes from '@/components/Prizes';
 
 export default {
   name: "home",
   components: {
-    HelloWorld
+    HeroImg,
+    Prizes
+  },
+  data() {
+    return {
+      baseUrl: 'https://pan.playad.co/api/',
+      promotionUrl: 'https://pan.playad.co/api/settings/promotion',
+      promotionStart: '',
+    }
+  },
+  created() {    
+    Axios.get(this.promotionUrl)
+      .then(res => {
+        console.log('res: ', res);
+        if (res.data.success) {
+          this.promotionStart = moment(res.data.promotion_start).format('DD.MM.YYYY.');
+        }
+      })
+      .catch(err => console.log('error: ', err));
   }
 };
 </script>

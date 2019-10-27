@@ -1,12 +1,18 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Naslovnica</router-link>
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+import './external-scss/custom.scss';
+export default {
+  
+}
+</script>
 
 <style>
 #app {
@@ -19,6 +25,7 @@
 
 #nav {
   padding: 30px;
+  text-align: left;
 }
 
 #nav a {
