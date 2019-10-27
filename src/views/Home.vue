@@ -28,7 +28,6 @@ export default {
   created() {    
     Axios.get(this.promotionUrl)
       .then(res => {
-        console.log('res: ', res);
         if (res.data.success) {
           this.promotionStart = moment(res.data.promotion_start).format('DD.MM.YYYY.');
         }

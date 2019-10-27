@@ -11,8 +11,6 @@ export default {
   },
   watch: {
     promotionStart(newVal) {
-      console.log('newVal: ', newVal);
-      
       this.promotionStart = newVal;
     }
   },

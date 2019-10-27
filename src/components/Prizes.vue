@@ -1,6 +1,6 @@
 <template>
   <b-container class="prizes" fluid>
-    <h1>Nagrade</h1>
+    <h1 class="my-5">Nagrade</h1>
     <b-row>
       <b-card-group class="row" deck>
         <template v-for="prize in prizes">
@@ -39,7 +39,6 @@ export default {
     getPrizes() {
       Axios.get(this.prizesUrl)
         .then(res => {
-          console.log('res: ', res);
           if (res.data.success) {
             this.prizes = res.data.prizes;
           }
@@ -50,7 +49,6 @@ export default {
       return this.contentBaseUrl + imgUri;
     },
     goToPrizeDetails(prizeId, prizeName, image_url) {
-      console.log('prizeId: ', prizeId);
       this.$router.push({
         name: 'prize',
         params: {

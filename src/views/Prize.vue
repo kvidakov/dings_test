@@ -32,7 +32,6 @@ export default {
       let prizeUrl = this.prizesUrl + this.prize.id;
       Axios.get(prizeUrl)
         .then(res => {
-          console.log('res: ', res);
           if (res.data.success) {
             this.prize = Object.assign({}, this.prize, res.data.prize);
           }
@@ -41,8 +40,6 @@ export default {
     },
   },
   created() {
-    console.log('this.$route.params: ', this.$route.params);
-    console.log('this.$route.params.id: ', this.$route.params.id);
     this.prize.id = this.$route.params.id;
     this.prize.imageUrl = this.$route.params.image_url;
     this.getPrize();
